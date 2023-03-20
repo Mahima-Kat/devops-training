@@ -4,11 +4,13 @@ on:
     branches: [dev]
 
 jobs:   
-  Build_it_is_thejobname: 
+  Mahima: 
     runs-on: windows-latest
     steps: 
       - name: Pune
         run: echo "hello pune"
       - name: Step 2
         run: echo "tree structure"
+      - name: Step 3
+        run: echo "this is step 3"
     
