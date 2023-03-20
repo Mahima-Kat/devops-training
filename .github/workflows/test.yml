@@ -1,7 +1,7 @@
 name: Mahima Katakwar
 on:   
   push:
-    branches: [qc]
+    branches: [dev]
 
 jobs:   
   Mahima: 
