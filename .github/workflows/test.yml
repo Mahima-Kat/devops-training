@@ -1,1 +1,14 @@
+name: Mahima Katakwar
+on:   
+  push:
+    branches: [dev]
 
+jobs:   
+  Build_it_is_thejobname: 
+    runs-on: windows-latest
+    steps: 
+      - name: Pune
+        run: echo "hello pune"
+      - name: Step 2
+        run: echo "tree structure"
+    
