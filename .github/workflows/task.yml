@@ -1,15 +1,23 @@
-name: Mahima Katakwar
+# Set variables once
+variables:
+  names: mahima
+  bio: first steps for devops program
+
+name: $(names)
 on:   
   push:
     branches: [dev]
-
-jobs:   
-  Mahima: 
+ 
+jobs:
+  job1:
     runs-on: windows-latest
-    steps: 
-      - name: Pune
-        run: echo "hello pune"
+    steps:
+      - name: Step 1
+        run: echo $(names)
       - name: Step 2
-        run: echo "tree structure"
-      - name: Step 4
-        run: echo "this is step 3"
+        run: echo $(bio)
+      
+    
+  
+
+
