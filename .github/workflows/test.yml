@@ -6,11 +6,24 @@ on:
 jobs:   
   Mahima: 
     runs-on: windows-latest
-    steps: 
-      - name: Pune
+    steps:
+      - name : Download code
+        
+        
+      - name: find the lastest file and content
         run: |
-            echo "The newly created file is $Filename"
-            echo "The content of newly created file is $FileContent"
+            #Path of the file is in $path
+            $path = ""
+              #Get the newly created filename and storing in $Filename
+            $Filename = Get-ChildItem $path -File -Recurse | Sort-Object -Property LastWriteTime -Descending  | select -First 1 
+              #Displaying the filename
+            Write-Host "The newly created file is $Filename"
+            #Getting the full folderpath of the $Filename and it is storing it in $FileNamePath
+            $FileNamePath = Get-ChildItem -Path $path -Filter $Filename -Recurse  | ForEach-Object{$_.FullName} 
+            #Getting the file contents and storing it in $FileContent
+            $FileContent = Get-Content $FileNamePath
+            #Displaying the output of newly created file
+            Write-Host "The content of newly created file is $FileContent" 
 
         
     
