@@ -1,15 +1,12 @@
 name: Mahima Katakwar
-on:   
-  push:
-    branches: [dev]
-
+on: [push]
 jobs:   
-  Mahima: 
+  dev-deploy: 
+    if: github.repository == 'Mahima-Kat/devops-training'
     runs-on: windows-latest
     steps:
       - name : Download code
-        
-        
+               #Downloading the repo code into runner
       - name: find the lastest file and content
         run: |
             #Path of the file is in $path
