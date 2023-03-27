@@ -1,12 +1,15 @@
 name: Mahima Katakwar
-on: [push]
+on:   
+  push:
+    branches: [dev]
+
 jobs:   
-  dev-deploy: 
-    if: github.repository == 'Mahima-Kat/devops-training'
+  Mahima: 
     runs-on: windows-latest
     steps:
       - name : Download code
-               #Downloading the repo code into runner
+        
+        
       - name: find the lastest file and content
         run: |
             #Path of the file is in $path
@@ -21,6 +24,11 @@ jobs:
             $FileContent = Get-Content $FileNamePath
             #Displaying the output of newly created file
             Write-Host "The content of newly created file is $FileContent" 
+
+        
+    
+        
+    
 
         
     
