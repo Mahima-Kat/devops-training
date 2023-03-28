@@ -23,8 +23,8 @@ jobs:
           #Displaying the filename
           $File = $Filename.Name
           Write-Host "The newly created file is $File"
-          #Getting the full folderpath of the $Filename and it is storing it in $FileNamePath
-          $FileNamePath = Get-ChildItem -Path $path -Filter $Filename -Recurse  | ForEach-Object{$_.FullName} 
+          #Getting the full folderpath of the $File and it is storing it in $FileNamePath
+          $FileNamePath = Get-ChildItem -Path $path -Filter $File -Recurse  | ForEach-Object{$_.FullName} 
           #Getting the file contents and storing it in $FileContent
           $FileContent = Get-Content $FileNamePath
           #Displaying the output of newly created file
