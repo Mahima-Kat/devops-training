@@ -29,5 +29,7 @@ jobs:
           $FileContent = Get-Content $FileNamePath
           #Displaying the output of newly created file
           Write-Host "The content of newly created file is $FileContent" 
+      - name: Latest file using git command
+        run: git diff --diff-filter=A --name-only HEAD
 
     
