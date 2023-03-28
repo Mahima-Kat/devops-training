@@ -10,8 +10,23 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2  
-      - name: Task 2
+      - name: List the downloaded files
         run: |
          echo "Display the latest file and contents in Github Actions."
          dir
+      - name: Latest file
+        run: |
+          #Path of the file is in $path
+          $path = "./Search"
+          #Get the newly created filename and storing in $Filename
+          $Filename = Get-ChildItem $path -File -Recurse | Sort-Object -Property LastWriteTime -Descending  | select -First 1 
+          #Displaying the filename
+          Write-Host "The newly created file is $Filename"
+          #Getting the full folderpath of the $Filename and it is storing it in $FileNamePath
+          $FileNamePath = Get-ChildItem -Path $path -Filter $Filename -Recurse  | ForEach-Object{$_.FullName} 
+          #Getting the file contents and storing it in $FileContent
+          $FileContent = Get-Content $FileNamePath
+          #Displaying the output of newly created file
+          Write-Host "The content of newly created file is $FileContent" 
+
     
