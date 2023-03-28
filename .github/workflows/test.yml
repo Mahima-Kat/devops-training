@@ -11,5 +11,7 @@ jobs:
         with:
           fetch-depth: 2  
       - name: Task 2
-        run: echo "Display the latest file and contents in Github Actions."
+        run: |
+         echo "Display the latest file and contents in Github Actions."
+         dir
     
