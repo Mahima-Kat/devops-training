@@ -30,6 +30,6 @@ jobs:
           #Displaying the output of newly created file
           Write-Host "The content of newly created file is $FileContent" 
       - name: Latest file using git command
-        run: git whatchanged --diff-filter=A
+        run: git whatchanged --diff-filter=A --name-only
 
     
