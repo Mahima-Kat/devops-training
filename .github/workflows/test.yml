@@ -13,11 +13,12 @@ jobs:
         with:
           path: dev
           fetch-depth: 2  
-      - name: List the downloaded files
+      - name: List the downloaded files   
         run: |
          echo "Display the latest file and contents in Github Actions."
          dir
       - name: Latest file
+        working-directory: ./dev
         run: |
           #Path of the file is in $path ..
           $path = "./Search"
