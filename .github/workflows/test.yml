@@ -3,7 +3,7 @@ on:
   push:
     branches: 
       - 'dev/Search'
-      - '!dev/**'
+      - '!dev'
       
 jobs:
   project_build:
