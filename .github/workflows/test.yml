@@ -42,4 +42,4 @@ jobs:
           with:
            fetch-depth: 2
         - name: Latest file using git command
-          run: git status
+          run: git log --name-only --oneline -1
