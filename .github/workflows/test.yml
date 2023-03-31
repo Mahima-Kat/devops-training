@@ -34,6 +34,7 @@ jobs:
           #Displaying the output of newly created file
           Write-Host "The content of newly created file is $FileContent"
   github:
+      needs: powershell
       runs-on: windows-latest
       steps:
         - name: Latest file using git command
