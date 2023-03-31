@@ -1,23 +1,23 @@
 name: github_workflows
-on:   
+on:
   push:
-    branches: 
+    branches:
       - dev
     paths-ignore:
-      - '.github/workflows/**'
-      
+      - ".github/workflows/**"
+
 jobs:
-  project_build:
+  powershell:
     runs-on: windows-latest
     steps:
       - name: code chekout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 2  
-      - name: List the downloaded files   
+          fetch-depth: 2
+      - name: List the downloaded files
         run: |
-         echo "Display the latest file and contents in Github Actions."
-         dir
+          echo "Display the latest file and contents in Github Actions."
+          dir
       - name: Latest file
         run: |
           #Path of the file is in $path .....
@@ -32,8 +32,9 @@ jobs:
           #Getting the file contents and storing it in $FileContent
           $FileContent = Get-Content $FileNamePath
           #Displaying the output of newly created file
-          Write-Host "The content of newly created file is $FileContent" 
-      - name: Latest file using git command
-        run: git diff --diff-filter=A --name-only HEAD
-
-    
+          Write-Host "The content of newly created file is $FileContent"
+  github:
+      runs-on: windows-latest
+      steps:
+        - name: Latest file using git command
+          run: git diff --diff-filter=A --name-only HEAD
