@@ -2,8 +2,7 @@ name: github_workflows
 on:   
   push:
     branches: 
-      - 'dev/Search'
-      - '!dev'
+      - dev
       
 jobs:
   project_build:
