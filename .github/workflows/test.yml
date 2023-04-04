@@ -33,8 +33,12 @@ jobs:
           $FileContent = Get-Content $FileNamePath
           #Displaying the output of newly created file
           Write-Host "The content of newly created file is $FileContent"
+  mahima:
+    runs-on: windows-latest
+    steps:
+      - run: echo "My name is Mahima"
   github:
-      needs: powershell
+      needs: [powershell, mahima]
       runs-on: windows-latest
       steps:
         - name: Downloading dev repository
