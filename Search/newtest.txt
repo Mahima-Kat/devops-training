@@ -1,2 +1,2 @@
 Github-workflows should be learn.
-end
+end of the file
