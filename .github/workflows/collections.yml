@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Display the default GH env vars
         run: |
-          echo "Github Author: $GITHUB_ACTOR"
+          echo "$GITHUB_ACTOR"
           echo "Github Repo name: $GITHUB_REF"
           echo "Github workflow path: $GITHUB_ACTION, $GITHUB_ACTION_PATH"
           echo "Github Branch: $GITHUB_REF_NAME"
