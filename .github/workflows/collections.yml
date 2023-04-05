@@ -2,7 +2,6 @@ name: collections
 on:
   push:
     branches: [dev]
-  workflow_dispatch:
 
 jobs:
   build_project:
@@ -10,11 +9,11 @@ jobs:
     steps:
       - name: Display the default GH env vars
         run: |
-          echo: "Github Author: $GITHUB_ACTOR"
-          echo: "Github Repo name: $GITHUB_REF"
-          echo: "Github workflow path: $GITHUB_ACTION, $GITHUB_ACTION_PATH"
-          echo: "Github Branch: $GITHUB_REF_NAME"
-          echo: "Github Build No.: $GITHUB_RUN_ID, $GITHUB_RUN_NUMBER"
+          echo "Github Author: $GITHUB_ACTOR"
+          echo "Github Repo name: $GITHUB_REF"
+          echo "Github workflow path: $GITHUB_ACTION, $GITHUB_ACTION_PATH"
+          echo "Github Branch: $GITHUB_REF_NAME"
+          echo "Github Build No.: $GITHUB_RUN_ID, $GITHUB_RUN_NUMBER"
 
 
         
