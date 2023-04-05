@@ -1,11 +1,7 @@
 name: collections
 on:
   push:
-    branches:
-      - dev
-  workflow_dispatch:      
-    #paths: 
-      #- ".github/devops.config"
+    branches: [dev]
       
 jobs:
   build_project:
