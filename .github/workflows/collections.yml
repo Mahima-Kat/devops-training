@@ -1,4 +1,4 @@
-name: default-environment-variables
+name: collections_default-environment-variables
 
 on: [push]
 
