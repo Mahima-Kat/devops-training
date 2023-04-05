@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - dev
-    paths: 
-      - ".github/devops.config"
+    #paths: 
+      #- ".github/devops.config"
       
 jobs:
   build_project:
