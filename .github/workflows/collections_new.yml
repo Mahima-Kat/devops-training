@@ -6,7 +6,7 @@ jobs:
     steps:
       - run: |
               echo "Branch Name:" '${{ toJSON(github.repository_owner) }}'
-              echo "workflow-path:" '${{ toJSON(github.action_path) }}'
-              echo "branch name:" '${{ toJSON(github.ref_name) }}'
+              echo "workflow-path:" '${{ toJSON(github.path) }}'
+              echo "branch name:" '${{ toJSON(github.ref_name	) }}'
               echo "build-no:" '${{ toJSON(github.run_number) }}'
               echo "repo name:" '${{ toJSON(github.repository) }}'
