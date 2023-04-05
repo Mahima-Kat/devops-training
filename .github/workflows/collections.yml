@@ -2,6 +2,7 @@ name: collections
 on:
   push:
     branches: [dev]
+  workflow_dispatch:
 
 jobs:
   build_project:
