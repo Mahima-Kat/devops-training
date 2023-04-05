@@ -1,1 +1,5 @@
-hi
+name: collections
+on:
+  push:
+    branches:
+      - dev
