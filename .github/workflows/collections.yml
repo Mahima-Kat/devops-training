@@ -3,3 +3,10 @@ on:
   push:
     branches:
       - dev
+      
+jobs:
+  powershell:
+    runs-on: windows-latest
+    steps:
+      - run: echo "this file is running"
+        
