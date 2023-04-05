@@ -4,4 +4,4 @@ jobs:
   prod-check:
     runs-on: windows-latest
     steps:
-      - run: echo '${{ toJSONt(github.author_name) }}'
+      - run: echo '${{ toJSON(github.author_name) }}'
