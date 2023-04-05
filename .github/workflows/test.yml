@@ -48,4 +48,4 @@ jobs:
         - name: Latest file using git command
           run: |
               git log --name-only --oneline -1
-              echo "github -  $GITHUB_ACTOR"
+              echo "github -  ${GITHUB_ACTOR}"
