@@ -1,20 +1,19 @@
-name: collections
-on:
-  push:
-    branches: [dev]
-  workflow_dispatch:
+name: default-environment-variables
+
+on: [push]
 
 jobs:
-  build_project:
-    runs-on: windows-latest
-    steps:
-      - name: Display the default GH env vars
-        run: |
-          echo "$GITHUB_ACTOR"
-          echo "Github Repo name: $GITHUB_REF"
-          echo "Github workflow path: $GITHUB_ACTION, $GITHUB_ACTION_PATH"
-          echo "Github Branch: $GITHUB_REF_NAME"
-          echo "Github Build No.: $GITHUB_RUN_ID, $GITHUB_RUN_NUMBER"
-
-
-        
+    sample-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: echo-default-env-variables
+              run: |
+                  echo "Home: ${HOME}"
+                  echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+                  echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
+                  echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+                  echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+                  echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+                  echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+                  echo "GITHUB_SHA: ${GITHUB_SHA}"
+                  echo "GITHUB_REF: ${GITHUB_REF}
