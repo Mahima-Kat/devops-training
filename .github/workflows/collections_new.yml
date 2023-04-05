@@ -16,4 +16,4 @@ jobs:
         - name: Secrets using env vars
           env: 
             PASSWORD_PS: $PASSWORD
-          run: echo $PASSWORD
+          run: echo ${{secrets.PASSWORD_PS}}
