@@ -3,10 +3,18 @@ on:
   push:
     branches:
       - dev
+    paths: 
+      - ".github/devops.config"
       
 jobs:
-  powershell:
+  build_project:
     runs-on: windows-latest
     steps:
-      - run: echo "this file is running"
+      - name: Display the default GH env vars
+        run: |
+          echo: "Github Author: $GITHUB_ACTOR"
+          echo: "Github Repo name: $GITHUB_REF"
+          echo: "Github workflow path: $GITHUB_ACTION, $GITHUB_ACTION_PATH"
+          echo: "Github Branch: $GITHUB_REF_NAME"
+          echo: "Github Build No.: $GITHUB_RUN_ID, $GITHUB_RUN_NUMBER"
         
