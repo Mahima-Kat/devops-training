@@ -17,3 +17,17 @@ jobs:
           env: 
             PASSWORD_PS: ${{secrets.PASSWORD}}
           run: echo $PASSWORD
+  Details_Config:
+      runs-on: windows-latest
+      steps:
+        - name: code checkout
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 2
+        - name: List the downloaded files
+          run: dir
+        - name: Displaying the contents of .config file
+          run: |
+          #Path of the devops file
+         
+
