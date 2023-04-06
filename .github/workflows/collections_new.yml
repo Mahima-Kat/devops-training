@@ -31,5 +31,6 @@ jobs:
             #getting the path of the .config file
             $Filepath = ".github/devops.config"
             Get-Content $Filepath
+            
          
 
