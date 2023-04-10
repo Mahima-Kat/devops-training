@@ -20,14 +20,14 @@ jobs:
   Details_Config:
     runs-on: windows-latest
     steps:
-      - name: Displaying the contents of .config file
-        run: |
       - name: code checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: List the downloaded files
         run: dir
+      - name: Displaying the contents of .config file
+        run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           $myName = $myJson.name
           echo "My name is $myName"
