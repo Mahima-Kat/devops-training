@@ -23,7 +23,7 @@ jobs:
       - name: Displaying the contents of .config file
         run: |
           dir
-          $path = ".github/devops.config"
+          <#  $path = ".github/devops.config"
           $myJson = Get-Content $path -Raw | ConvertFrom-Json 
           $myName = $myJson.name
           echo "My name is $myName"
@@ -31,6 +31,6 @@ jobs:
           echo "My empid is $myEmpId"
           $myVersion = $myJson.version
           if ([string]::IsNullOrEmpty($myEmpId, $myName, $myVersion))
-          {throw "Values are incorrect, it is null"}
+          {throw "Values are incorrect, it is null"} #>
           
 
