@@ -20,15 +20,10 @@ jobs:
   Details_Config:
     runs-on: windows-latest
     steps:
-      - name: code checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: List the downloaded files
-        run: dir
       - name: Displaying the contents of .config file
         run: |
-          $myJson = Get-Content ".github/workflows" -Raw | ConvertFrom-Json 
+          $path = ".github/workflows"
+          $myJson = Get-Content $path -Raw | ConvertFrom-Json 
           $myName = $myJson.name
           echo "My name is $myName"
           $myEmpId = $myJson.employee_id
