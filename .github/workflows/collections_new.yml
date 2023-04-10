@@ -32,7 +32,7 @@ jobs:
           $myName = $myJson.name
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
-          if ([string]::IsNullOrEmpty($myEmpId, $myName, $Myversion))
+          if ([string]::IsNullOrEmpty($myEmpId))
           {throw "Values can't be null"}
           
 
