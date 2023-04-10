@@ -5,35 +5,36 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-              echo "author:" '${{ toJSON(github.repository_owner) }}'
-              echo "workflow-path:" '${{ toJSON(github.ref) }}'
-              echo "branch name:" '${{ toJSON(github.ref_name	) }}'
-              echo "build-no:" '${{ toJSON(github.run_number) }}'
-              echo "repo name:" '${{ toJSON(github.repository) }}'
-  Using_Secrets:   
-      runs-on: windows-latest
-      steps:
-        - name: Secrets using env vars
-          env: 
-            PASSWORD_PS: ${{secrets.PASSWORD}}
-          run: echo $PASSWORD
+          echo "author:" '${{ toJSON(github.repository_owner) }}'
+          echo "workflow-path:" '${{ toJSON(github.ref) }}'
+          echo "branch name:" '${{ toJSON(github.ref_name	) }}'
+          echo "build-no:" '${{ toJSON(github.run_number) }}'
+          echo "repo name:" '${{ toJSON(github.repository) }}'
+  Using_Secrets:
+    runs-on: windows-latest
+    steps:
+      - name: Secrets using env vars
+        env:
+          PASSWORD_PS: ${{secrets.PASSWORD}}
+        run: echo $PASSWORD
   Details_Config:
-      runs-on: windows-latest
-      steps:
-        - name: code checkout
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 2
-        - name: List the downloaded files
-          run: dir
-        - name: Displaying the contents of .config file
-          run: |
-            $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json
-            echo "Display the values"
-            echo $myJson
-
-       
+    runs-on: windows-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: List the downloaded files
+        run: dir
+      - name: Displaying the contents of .config file
+        run: |
+          $myJson = Get-Content ".github/workflows" -Raw | ConvertFrom-Json 
+          $myName = $myJson.name
+          echo "My name is $myName"
+          $myEmpId = $myJson.employee_id
+          echo "My empid is $myEmpId"
+          $myVersion = $myJson.version
+          if ([string]::IsNullOrEmpty($myEmpId, $myName, $myVersion))
+          {throw "Values are incorrect, it is null"}
           
-            
-         
 
