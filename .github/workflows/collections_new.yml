@@ -30,10 +30,9 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           $myName = $myJson.name
-          echo "My name is $myName"
           $myEmpId = $myJson.employee_id
-          echo "My empid is $myEmpId"
-          if ([string]::IsNullOrEmpty($myEmpId))
-          {throw "Employee id is null"}
+          $Myversion = $myJson.version
+          if ([string]::IsNullOrEmpty($myEmpId, $myName, $Myversion))
+          {throw "Values can't be null"}
           
 
