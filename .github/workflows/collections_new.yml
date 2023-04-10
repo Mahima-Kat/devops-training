@@ -28,11 +28,11 @@ jobs:
           run: dir
         - name: Displaying the contents of .config file
           run: |
-            #getting the path of the .config file
-            $Filepath = ".github/devops.config"
-            Get-Content $Filepath
-            Get-Childitem $Filepath 
-            $Error | Get-Error
+            $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json
+            echo "Display the values"
+            echo $myJson
+
+       
           
             
          
