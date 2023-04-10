@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Displaying the contents of .config file
         run: |
-          $path = "./workflows"
+          $path = "./devops.config"
           $myJson = Get-Content $path -Raw | ConvertFrom-Json 
           $myName = $myJson.name
           echo "My name is $myName"
