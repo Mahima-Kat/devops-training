@@ -28,7 +28,7 @@ jobs:
         run: dir
       - name: Displaying the contents of .config file
         run: |
-          $myJson = Get-Content ".github/workflows" -Raw | ConvertFrom-Json 
+          $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           $myName = $myJson.name
           echo "My name is $myName"
           $myEmpId = $myJson.employee_id
