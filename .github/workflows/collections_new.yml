@@ -32,7 +32,7 @@ jobs:
             $Filepath = ".github/devops.config"
             Get-Content $Filepath
             Get-Childitem $Filepath 
-            Get-Error
+            $Error | Get-Error
           
             
          
