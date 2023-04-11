@@ -17,7 +17,7 @@ jobs:
           $myName = $myJson.name
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
-          Write-Host ${{myName}}, ${{myEmpId}}, ${{Myversion}}
+          echo ${{myName}}, ${{myEmpId}}, ${{Myversion}}
       - name: Task3- If any values missed in json, it will throw an error message
         run: |
           if ([string]::IsNullOrEmpty($myName) -or [string]::IsNullOrEmpty($myEmpId) -and [string]::IsNullOrEmpty($Myversion)) 
