@@ -44,13 +44,13 @@ jobs:
     runs-on: windows-latest
     steps: 
       - name: Task7 - create a release with (your name - repo name - branch name - workflow no)
-        uses: actions/create-release@v3
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           owner: ${{(github.repository_owner)}}
-          repo: ${{(github.ref_name)}}
+          
          
 
