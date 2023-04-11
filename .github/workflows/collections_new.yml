@@ -34,5 +34,7 @@ jobs:
           $Myversion = $myJson.version
           if ([string]::IsNullOrEmpty($myEmpId))
           {throw "Values can't be null"}
+      - name: reusing the variables between the steps
+        run: echo $myName
           
 
