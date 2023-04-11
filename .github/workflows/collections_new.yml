@@ -20,7 +20,7 @@ jobs:
           $myNam, $myEmpId, $Myversion
       - name: Task3- If any values missed in json, it will throw an error message
         run: |
-          if ([string]::IsNullOrEmpty($myName) -or [string]::IsNullOrEmpty($myEmpId) -and [string]::IsNullOrEmpty($Myversion)) 
+          if ([string]::IsNullOrEmpty($myName) -or [string]::IsNullOrEmpty($myEmpId) -or [string]::IsNullOrEmpty($Myversion)) 
           {echo "value is null"}
   GithubAction_details:
     runs-on: windows-latest
