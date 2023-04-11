@@ -48,9 +48,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          owner: ${{github.owner}}
-          repo: ${{github.repo}}
-          commitish: ${{github.commitish}}
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
 
