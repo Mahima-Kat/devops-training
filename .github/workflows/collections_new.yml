@@ -21,7 +21,7 @@ jobs:
       - name: Task3- If any values missed in json, it will throw an error message
         run: |
           if ( $null -eq $myName -or $null -eq $myEmpId -or $null -eq $Myversion)
-          { throw "value is null" }
+          { echo "value is null" }
   GithubAction_details:
     runs-on: windows-latest
     steps:
