@@ -50,4 +50,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
+          owner: ${{(github.repository_owner)}}
+          repo: ${{(github.ref_name)}}
+          repo-name: ${{(github.repository)}}
 
