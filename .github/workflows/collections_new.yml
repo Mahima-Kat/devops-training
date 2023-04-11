@@ -12,12 +12,14 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
-          #Task2: Assign the values into variables from config file
+      - name: Task2- Assign the values into variables from config file
+        run: |
           $myName = $myJson.name
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
           echo $myName, $myEmpId, $Myversion
-          #Task3: If any values missed in json, it will throw an error message
+      - name: Task3- If any values missed in json, it will throw an error message
+        run: |
           if ( $null -eq $myName -or $null -eq $myEmpId -or $null -eq $Myversion)
           { throw "value is null" }
   GithubAction_details:
