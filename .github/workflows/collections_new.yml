@@ -18,7 +18,7 @@ jobs:
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
           echo $myName, $myEmpId, $Myversion
-      - name: Task3- If any values missed in json, it will throw an error message.
+      - name: Task3- If any values missed in json, it will throw an error message
         run: |
           if ( $null -eq $myName -or $null -eq $myEmpId -or $null -eq $Myversion)
           { throw "value is null" }
