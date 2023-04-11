@@ -34,9 +34,5 @@ jobs:
           $Myversion = $myJson.version
           if ([string]::IsNullOrEmpty($myEmpId))
           {throw "Values can't be null"}
-  Reusing_Values:
-    runs-on: windows-latest
-    steps:
       - name: reusing the variables between the steps
-
-
+        run: echo $myName
