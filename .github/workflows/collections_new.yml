@@ -19,8 +19,6 @@ jobs:
         run: echo $PASSWORD
   Details_Config:
     runs-on: windows-latest
-    outputs:
-      output1: ${{ steps.step1.outputs.name }}
     steps:
       - name: code checkout
         uses: actions/checkout@v3
@@ -36,13 +34,9 @@ jobs:
           $Myversion = $myJson.version
           if ([string]::IsNullOrEmpty($myEmpId))
           {throw "Values can't be null"}
-      - id: step1
-        run: echo "name=hello" >> "$GITHUB_OUTPUT"
   Reusing_Values:
     runs-on: windows-latest
     steps:
       - name: reusing the variables between the steps
-      - env:
-          OUTPUT1: ${{needs.Details_Config.outputs.output1}}
-          run: echo "$OUTPUT1"
+
 
