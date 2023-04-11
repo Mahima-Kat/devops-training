@@ -1,10 +1,30 @@
 name: Collections_new
 on: push
 jobs:
+  Details_Config:
+    runs-on: windows-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Task1- Read the config file and display the contents of it
+        run: |
+          $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
+          echo $myJson
+          #Task2: Assign the values into variables from config file
+          $myName = $myJson.name
+          $myEmpId = $myJson.employee_id
+          $Myversion = $myJson.version
+          echo $myName, $myEmpId, $Myversion
+          #Task3: If any values missed in json, it will throw an error message
+          if ( $null -eq $myName -or $null -eq $myEmpId -or $null -eq $Myversion)
+          { throw "value is null" }
   GithubAction_details:
     runs-on: windows-latest
     steps:
-      - run: |
+      - name: Tas4- display workflow-path, repo-name, author, build-no, branch name
+        run: |
           echo "author:" '${{ toJSON(github.repository_owner) }}'
           echo "workflow-path:" '${{ toJSON(github.ref) }}'
           echo "branch name:" '${{ toJSON(github.ref_name	) }}'
@@ -13,26 +33,7 @@ jobs:
   Using_Secrets:
     runs-on: windows-latest
     steps:
-      - name: Secrets using env vars
+      - name: Task5- create secrets and use those secrets in your job
         env:
           PASSWORD_PS: ${{secrets.PASSWORD}}
         run: echo $PASSWORD
-  Details_Config:
-    runs-on: windows-latest
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: List the downloaded files
-        run: dir
-      - name: Displaying the contents of .config file
-        run: |
-          $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
-          $myName = $myJson.name
-          $myEmpId = $myJson.employee_id
-          $Myversion = $myJson.version
-          if ([string]::IsNullOrEmpty($myEmpId))
-          {throw "Values can't be null"}
-      - name: reusing the variables between the steps
-        run: echo $myName
