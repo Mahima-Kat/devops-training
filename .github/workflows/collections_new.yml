@@ -52,5 +52,5 @@ jobs:
           release_name: Release ${{ github.ref }}
           owner: ${{(github.repository_owner)}}
           repo: ${{(github.ref_name)}}
-          body: ${{(github.repository)}}
+         
 
