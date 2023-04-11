@@ -36,10 +36,8 @@ jobs:
           $Myversion = $myJson.version
           if ([string]::IsNullOrEmpty($myEmpId))
           {throw "Values can't be null"}
-      - name: reusing the variables between the steps
-        run: echo $myName
       - id: step1
-        run: echo "name=$myName" >> "$GITHUB_OUTPUT"
+        run: echo "name=hello" >> "$GITHUB_OUTPUT"
   Reusing_Values:
     runs-on: windows-latest
     steps:
