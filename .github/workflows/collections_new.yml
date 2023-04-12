@@ -28,6 +28,7 @@ jobs:
       - name: Tas4- display workflow-path, repo-name, author, build-no, branch name
         run: |
           echo "author:" '${{ toJSON(github.repository_owner) }}'
+          echo "author = ${{ github.actor }}"
           echo "workflow-path:" '${{ toJSON(github.ref) }}'
           echo "branch name:" '${{ toJSON(github.ref_name	) }}'
           echo "build-no:" '${{ toJSON(github.run_number) }}'
