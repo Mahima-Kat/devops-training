@@ -49,5 +49,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: mahima01
-          release_name: mahima is good at github
+          tag_name: ${{github.actor}}-${{github.repository}}-${{github.ref_name}}-${{github.run_number}}
+          release_name: ${{github.actor}}-${{github.repository}}-${{github.ref_name}}-${{github.run_number}}
