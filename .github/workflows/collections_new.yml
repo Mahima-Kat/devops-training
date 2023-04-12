@@ -27,12 +27,12 @@ jobs:
     steps:
       - name: Tas4- display workflow-path, repo-name, author, build-no, branch name
         run: |
-          echo "author:" '${{ github.repository_owner }}'
+          echo "author: ${{ github.repository_owner }}"
           echo "author = ${{ github.actor }}"
-          echo "workflow-path:" '${{ github.ref }}'
-          echo "branch name:" '${{ github.ref_name	 }}'
-          echo "build-no:" '${{ github.run_number }}'
-          echo "repo name:" '${{ github.repository }}'
+          echo "workflow-path: ${{ github.ref }}"
+          echo "branch name: ${{ github.ref_name	 }}"
+          echo "build-no: ${{ github.run_number }}"
+          echo "repo name: ${{ github.repository }}"
   Using_Secrets:
     runs-on: windows-latest
     steps:
