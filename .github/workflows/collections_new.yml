@@ -53,7 +53,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
           token: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
-      - name: Increment value
+      - name: Increment value.
         uses: yoichiro/gh-action-increment-value@main
         with:
           prefix: 'buildNumber":'
