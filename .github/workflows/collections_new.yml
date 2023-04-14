@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "author: ${{ github.repository_owner }}"
           echo "author = ${{ github.actor }}"
-          echo "workflow-path: ${{ github._path}}"
+          echo "workflow-path: ${{ github.github_path}}"
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
           echo "repo name: ${{ github.repository }}"
@@ -50,5 +50,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: ${{github.actor}}-1.01
-          release_name: ${{github.actor}}-1.01
+          tag_name: ${{github.actor}}-1.02
+          release_name: ${{github.actor}}-1.02
