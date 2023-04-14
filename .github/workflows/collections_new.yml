@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "author: ${{ github.repository_owner }}"
           echo "author = ${{ github.actor }}"
-          echo "workflow-path: ${{ github_path}}"
+          echo "workflow-path: ${{ github._path}}"
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
           echo "repo name: ${{ github.repository }}"
