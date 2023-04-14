@@ -48,10 +48,15 @@ jobs:
     name: Create Release
     runs-on: windows-latest
     steps:
-      - name: Task7 - create a release with (your name - repo name - branch name - workflow no)
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check out source code
+        uses: actions/checkout@v3
         with:
-          tag_name: ${{github.actor}}-${{github.run_number}}
-          release_name: ${{github.actor}}--${{github.run_number}}
+          ref: ${{ github.ref }}
+          token: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
+      - name: Increment value
+        uses: yoichiro/gh-action-increment-value@main
+        with:
+          prefix: 'buildNumber":'
+          suffix: '}'
+          commit_message: 'Increment the build number to '
+     
