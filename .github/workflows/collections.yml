@@ -6,7 +6,7 @@ jobs:
     sample-job:
         runs-on: windows-latest
         steps:
-            - name: echo-default-env-variables
+            - name: echo-default-env-variables.
               run: |
                   echo "GITHUB_WORKFLOW: ${toJson(GITHUB_WORKFLOW)}"
                   echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
