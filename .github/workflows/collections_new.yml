@@ -50,5 +50,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: ${{github.actor}}-1.0
-          release_name: ${{github.actor}}-1.0
+          tag_name: ${{github.actor}}-1.1
+          release_name: ${{github.actor}}-1.1
