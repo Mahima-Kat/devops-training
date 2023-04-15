@@ -32,7 +32,6 @@ jobs:
       - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
         run: |
           echo "author: ${{ github.repository_owner }}"
-          echo "author = ${{ github.actor }}"
           echo "workflow ref-path: ${{ github.workflow_ref }}"
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
@@ -52,9 +51,5 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          run: |
-                $e+ = ${{ github.run_number }} 
-                echo "$e"
           tag_name: ${{github.actor}}-${{github.run_number}}
           release_name: ${{github.actor}}-${{github.run_number}}
