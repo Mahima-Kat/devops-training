@@ -5,6 +5,19 @@ on:
   workflow_dispatch:
 
 jobs:
+  get-next-version:
+    runs-on: windows-latest
+    steps: 
+      - name: checking release
+        uses: semantic-release-action/next-release-version/.github/workflows/next-release-version.yml@v4
+  do-the-thing:
+    name: Zhu Li, do the thing
+    runs-on: windows-latest
+    if: needs.get-next-version.outputs.new-release-published == 'true'
+    needs:
+      - get-next-version
+    steps:
+      - run: ./do-the-thing ${{ needs.get-next-version.outputs.new-release-version }}
   Details_Config:
     runs-on: windows-latest
     steps:
@@ -44,16 +57,3 @@ jobs:
         env:
           PASSWORD_PS: ${{secrets.PASSWORD}}
         run: echo $PASSWORD
-  get-next-version:
-    runs-on: windows-latest
-    steps: 
-      - name: checking release
-        uses: semantic-release-action/next-release-version/.github/workflows/next-release-version.yml@v4
-  do-the-thing:
-    name: Zhu Li, do the thing
-    runs-on: windows-latest
-    if: needs.get-next-version.outputs.new-release-published == 'true'
-    needs:
-      - get-next-version
-    steps:
-      - run: ./do-the-thing ${{ needs.get-next-version.outputs.new-release-version }}
