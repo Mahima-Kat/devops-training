@@ -40,7 +40,7 @@ jobs:
   Using_Secrets:
     runs-on: windows-latest
     steps:
-      - name: Task5- create secrets and use those secrets in your job
+      - name: Task5- create secrets and use those secrets in your job.
         env:
           PASSWORD_PS: ${{secrets.PASSWORD}}
         run: echo $PASSWORD
