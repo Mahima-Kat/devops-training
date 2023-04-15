@@ -53,5 +53,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          run: |
+                $e+ = ${{ github.run_number }} 
+                echo "$e"
           tag_name: ${{github.actor}}-${{github.run_number}}
           release_name: ${{github.actor}}-${{github.run_number}}
