@@ -1,10 +1,7 @@
 name: Release
 
 on:
-  release:
-    types:
-      - edited
-      - released
+  push:
 
 jobs:
   Release:
