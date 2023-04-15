@@ -44,19 +44,16 @@ jobs:
         env:
           PASSWORD_PS: ${{secrets.PASSWORD}}
         run: echo $PASSWORD
-  Github_Release:
-    name: Create Release
+  get-next-version:
     runs-on: windows-latest
+    steps: 
+      - name: checking release
+        uses: semantic-release-action/next-release-version/.github/workflows/next-release-version.yml@v4
+  do-the-thing:
+    name: Zhu Li, do the thing
+    runs-on: windows-latest
+    if: needs.get-next-version.outputs.new-release-published == 'true'
+    needs:
+      - get-next-version
     steps:
-      - name: Check out source code
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref }}
-          token: ${{ github.token }}
-      - name: Increment value
-        uses: yoichiro/gh-action-increment-value@main
-        with:
-          prefix: 'buildNumber":'
-          suffix: '}'
-          commit_message: 'Increment the build number to '
-     
+      - run: ./do-the-thing ${{ needs.get-next-version.outputs.new-release-version }}
