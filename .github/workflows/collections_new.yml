@@ -1,11 +1,11 @@
 name: Collections_new
-
 on:
   push:
-  workflow_dispatch:
-
+  workflow_dispatch: 
+  
 jobs:
-  Details_Config:
+  reading_json:
+    name: Reading JSON
     runs-on: windows-latest
     steps:
       - name: code checkout
@@ -26,7 +26,9 @@ jobs:
         run: |
           if ([string]::IsNullOrEmpty($myName) -or [string]::IsNullOrEmpty($myEmpId) -or [string]::IsNullOrEmpty($Myversion)) 
           {echo "value is null"}
-  GithubAction_details:
+  fetching_details:
+    name: Github Details
+    needs: reading_json
     runs-on: windows-latest
     steps:
       - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
@@ -36,20 +38,24 @@ jobs:
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
           echo "repo name: ${{ github.repository }}"
-  Using_Secrets:
+  create_secrets:
+    name: Create Secrets
+    needs: fetching_details
     runs-on: windows-latest
     steps:
-      - name: Task5- create secrets and use those secrets in your job.
+      - name: Task5- create secrets and use those secrets in your job
         env:
           PASSWORD_PS: ${{secrets.PASSWORD}}
         run: echo $PASSWORD
   Github_Release:
     name: Create Release
+    needs: create_secrets
     runs-on: windows-latest
-    steps:
+    steps: 
       - name: Task7 - create a release with (your name - repo name - branch name - workflow no)
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
           tag_name: ${{github.actor}}-${{github.run_number}}
           release_name: ${{github.actor}}-${{github.run_number}}
