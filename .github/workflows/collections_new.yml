@@ -29,8 +29,8 @@ jobs:
           echo "${{ env.name }}" 
           echo "${{ env.emp_id }}" 
           echo "${{ env.version }}" 
-          if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
-          {echo "value is null"}
+          #if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
+          #{echo "value is null"}
  fetching_details:
     name: Github Details
     needs: reading_json
