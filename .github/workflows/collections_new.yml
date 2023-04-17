@@ -25,9 +25,9 @@ jobs:
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
           echo $myName, $myEmpId, $Myversion
-          echo "::save-output name={name}::{$myName}"
-          echo "::save-output name={emp_id}::{$myEmpId}"
-          echo "::save-output name={version}::{$Myversion}"
+          echo "::save-state name={name}::{$myName}"
+          echo "::save-state name={emp_id}::{$myEmpId}"
+          echo "::save-state name={version}::{$Myversion}"
   fetching_json:
     name: Fetch Json
     needs: reading_json
