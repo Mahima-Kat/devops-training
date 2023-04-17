@@ -17,7 +17,7 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
-          echo "name=$myJson.name" >> GITHUB_ENV
+          echo "name=$myJson.name" >> $GITHUB_ENV
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
         # env: 
