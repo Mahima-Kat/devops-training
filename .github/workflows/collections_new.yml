@@ -24,16 +24,16 @@ jobs:
           echo "::save-output name={name}::{$myName}"
   fetching_json:
     name: Fetch Json
-    runs-on: windows-latest
     needs: reading_json
+    runs-on: windows-latest   
     steps:
       - env:
           OUTPUT1: ${{needs.reading_json.outputs.output1}}
         run: echo "$OUTPUT1"
   fetching_details:
     name: Github Details
-    runs-on: windows-latest
     needs: fetching_json
+    runs-on: windows-latest
     steps:
       - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
         run: |
