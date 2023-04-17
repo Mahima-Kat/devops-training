@@ -39,7 +39,7 @@ jobs:
           OUTPUT3: ${{needs.reading_json.outputs.output3}}
         run: |
           echo "$OUTPUT1, $OUTPUT2, $OUTPUT3"
-          if ([string]::IsNullOrEmpty($OUTPUT1) -or [string]::IsNullOrEmpty($OUTPUT2) -or [string]::IsNullOrEmpty($$OUTPUT3)) 
+          if ([string]::IsNullOrEmpty($OUTPUT1) -or [string]::IsNullOrEmpty($OUTPUT2) -or [string]::IsNullOrEmpty($OUTPUT3)) 
           {echo "value is null"}
   fetching_details:
     name: Github Details
