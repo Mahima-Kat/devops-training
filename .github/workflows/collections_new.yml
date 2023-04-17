@@ -7,15 +7,22 @@ jobs:
   reading_json:
     name: Reading JSON
     runs-on: windows-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
     steps:
       - name: code checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: Task1- Read the config file and display the contents of it.
+        id: step1
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
+          $myName = $myJson.name
+          echo $myName
+          echo "{test}={$myName}" >> $GITHUB_STATE
+          echo $GITHUB_STATE
       - name: Task2- Assign the values into variables from config file
         run: |
           $myName = $myJson.name
