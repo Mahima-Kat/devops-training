@@ -34,19 +34,6 @@ jobs:
   fetching_details:
     name: Github Details
     needs: reading_json
-    runs-on: windows-latest   
-    steps:
-      - env:
-          OUTPUT1: ${{needs.reading_json.outputs.output1}}
-          OUTPUT2: ${{needs.reading_json.outputs.output2}}
-          OUTPUT3: ${{needs.reading_json.outputs.output3}}
-        run: |
-          echo "$OUTPUT1, $OUTPUT2, $OUTPUT3"
-          if ([string]::IsNullOrEmpty($OUTPUT1) -or [string]::IsNullOrEmpty($OUTPUT2) -or [string]::IsNullOrEmpty($OUTPUT3)) 
-          {echo "value is null"}
-  fetching_details:
-    name: Github Details
-    needs: fetching_json
     runs-on: windows-latest
     steps:
       - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
