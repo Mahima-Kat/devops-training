@@ -9,6 +9,8 @@ jobs:
     runs-on: windows-latest
     outputs:
       output1: ${{ steps.step1.outputs.name }}
+      output2: ${{ steps.step1.outputs.emp_id }}
+      output3: ${{ steps.step1.outputs.version }}
     steps:
       - name: code checkout
         uses: actions/checkout@v3
@@ -20,8 +22,12 @@ jobs:
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
           $myName = $myJson.name
-          echo $myName
+          $myEmpId = $myJson.employee_id
+          $Myversion = $myJson.version
+          echo $myName, $myEmpId, $Myversion
           echo "::save-output name={name}::{$myName}"
+          echo "::save-output name={emp_id}::{$myEmpId}"
+          echo "::save-output name={version}::{$Myversion}"
   fetching_json:
     name: Fetch Json
     needs: reading_json
@@ -29,7 +35,12 @@ jobs:
     steps:
       - env:
           OUTPUT1: ${{needs.reading_json.outputs.output1}}
-        run: echo "$OUTPUT1"
+          OUTPUT2: ${{needs.reading_json.outputs.output2}}
+          OUTPUT3: ${{needs.reading_json.outputs.output3}}
+        run: |
+          echo "$OUTPUT1, $OUTPUT2, $OUTPUT3"
+          if ([string]::IsNullOrEmpty($OUTPUT1) -or [string]::IsNullOrEmpty($OUTPUT2) -or [string]::IsNullOrEmpty($$OUTPUT3)) 
+          {echo "value is null"}
   fetching_details:
     name: Github Details
     needs: fetching_json
