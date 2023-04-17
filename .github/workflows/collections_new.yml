@@ -8,7 +8,7 @@ jobs:
     name: Reading JSON
     runs-on: windows-latest
     outputs:
-      output1: ${{ steps.step1.outputs.test }}
+      output1: ${{ steps.step1.outputs.name }}
     steps:
       - name: code checkout
         uses: actions/checkout@v3
@@ -21,9 +21,9 @@ jobs:
           echo $myJson
           $myName = $myJson.name
           echo $myName
-          echo "::save-output name={test}::{$myName}"
+          echo "::save-output name={name}::{$myName}"
   fetching_json:
-    name: fetch json
+    name: Fetch Json
     runs-on: windows-latest
     needs: reading_json
     steps:
@@ -33,6 +33,7 @@ jobs:
   fetching_details:
     name: Github Details
     runs-on: windows-latest
+    needs: fetching_json
     steps:
       - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
         run: |
