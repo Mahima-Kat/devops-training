@@ -21,21 +21,17 @@ jobs:
           echo $myJson
           $myName = $myJson.name
           echo $myName
-          echo "{test}={$myName}" >> $GITHUB_STATE
-          echo "{$test}"
-      - name: Task2- Assign the values into variables from config file
-        run: |
-          $myName = $myJson.name
-          $myEmpId = $myJson.employee_id
-          $Myversion = $myJson.version
-          $myName, $myEmpId, $Myversion
-      - name: Task3- If any values missed in json, it will throw an error message
-        run: |
-          if ([string]::IsNullOrEmpty($myName) -or [string]::IsNullOrEmpty($myEmpId) -or [string]::IsNullOrEmpty($Myversion)) 
-          {echo "value is null"}
+          echo "::save-state name={test}::{$myName}"
+  fetching_json:
+    name: fetch json
+    runs-on: windows-latest
+    needs: reading_json
+    steps:
+      - env:
+          OUTPUT1: ${{needs.reading_json.outputs.output1}}
+        run: echo "$OUTPUT1"
   fetching_details:
     name: Github Details
-    needs: reading_json
     runs-on: windows-latest
     steps:
       - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
