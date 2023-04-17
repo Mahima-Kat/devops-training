@@ -1,18 +1,33 @@
 name: Collections_new
 on:
   push:
-  workflow_dispatch:
+  workflow_dispatch: 
   
 jobs:
-  job1:
+  reading_json:
+    name: Reading JSON
     runs-on: ubuntu-latest
     steps:
-      - name: Set the value
-        id: step_one
+      - name: code checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Task1- Read the config file and display the contents of it.
+        id: step1
         run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
-      - name: Use the value
-        id: step_two
-        run: echo "$action_state"
-
-
+          $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
+          echo $myJson
+          echo "name=$myJson.name" >> $GITHUB_ENV
+          echo "emp_id=$myJson.employee_id" >> $GITHUB_ENV
+          echo "version=myJson.version" >> $GITHUB_ENV
+        # env: 
+        #   name: $myName,
+        #   emp_id: $myEmpId,
+        #   version: $Myversion
+      - name: Checking value null or not
+        run: |
+          echo "${{ env.name }}" 
+          echo "${{ env.emp_id }}" 
+          echo "${{ env.version }}" 
+          if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
+          {echo "value is null"}
