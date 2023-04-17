@@ -17,17 +17,13 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
-          $myName = $myJson.name
+          echo "myName = $myJson.name" >> $GITHUB_ENV
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
           echo $myName, $myJson.name, $myEmpId, $myJson.employee_id 
-        env: 
-          name: $myName,
-          emp_id: $myEmpId,
-          version: $Myversion
       - name: Checking value null or not
         run: |
-          echo "${{ env.name }}" 
+          echo "${{ env.myName }}" 
           echo "${{ env.emp_id }}" 
           echo "${{ env.version }}" 
           #if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
