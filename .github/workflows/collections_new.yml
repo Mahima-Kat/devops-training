@@ -22,7 +22,7 @@ jobs:
           $myName = $myJson.name
           echo $myName
           echo "{test}={$myName}" >> $GITHUB_STATE
-          echo "{test}"
+          echo "${{test}}"
       - name: Task2- Assign the values into variables from config file
         run: |
           $myName = $myJson.name
