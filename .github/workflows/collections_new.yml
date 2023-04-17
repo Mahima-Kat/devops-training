@@ -7,10 +7,6 @@ jobs:
   reading_json:
     name: Reading JSON
     runs-on: windows-latest
-    outputs:
-      output1: ${{ steps.step1.outputs.name }}
-      output2: ${{ steps.step1.outputs.emp_id }}
-      output3: ${{ steps.step1.outputs.version }}
     steps:
       - name: code checkout
         uses: actions/checkout@v3
@@ -24,12 +20,19 @@ jobs:
           $myName = $myJson.name
           $myEmpId = $myJson.employee_id
           $Myversion = $myJson.version
-          echo $myName, $myEmpId, $Myversion
-          echo "::save-state name={name}::{$myName}"
-          echo "::save-state name={emp_id}::{$myEmpId}"
-          echo "::save-state name={version}::{$Myversion}"
-  fetching_json:
-    name: Fetch Json
+        env: 
+          name: $myName,
+          emp_id: $myEmpId,
+          version: $Myversion
+      - name: Checking value null or not
+        run: |
+          echo "${{ env.name }}" 
+          echo "${{ env.emp_id }}" 
+          echo "${{ env.version }}" 
+          if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
+          {echo "value is null"}
+  fetching_details:
+    name: Github Details
     needs: reading_json
     runs-on: windows-latest   
     steps:
