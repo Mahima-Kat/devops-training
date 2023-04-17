@@ -17,16 +17,16 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
-          name = $myJson.name >> $GITHUB_ENV
-          emp_id = $myJson.employee_id >> $GITHUB_ENV
-          version = $myJson.version >> $GITHUB_ENV
+          echo "name = $myJson.name" >> $GITHUB_ENV
+          echo "emp_id = $myJson.employee_id" >> $GITHUB_ENV
+          echo "version = $myJson.version" >> $GITHUB_ENV
       - name: Checking value null or not
         run: |
           echo "${{ env.name }}" 
           echo "${{ env.emp_id }}" 
           echo "${{ env.version }}" 
-          if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
-          {echo "value is null"}
+          #if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
+          #{echo "value is null"}
   fetching_details:
     name: Github Details
     needs: reading_json
