@@ -1,51 +1,18 @@
 name: Collections_new
 on:
   push:
-  workflow_dispatch: 
+  workflow_dispatch:
   
 jobs:
- reading_json:
-    name: Reading JSON
-    runs-on: windows-latest
-steps:
-  - name: Set the value
-    id: step_one
-    run: |
-      echo "action_state=yellow" >> $GITHUB_ENV
-  - name: Use the value
-    id: step_two
-    run: |
-      echo "${{ env.action_state }}" # This will output 'yellow'
-fetching_details:
-    name: Github Details
-    needs: reading_json
+  job1:
     runs-on: windows-latest
     steps:
-      - name: Tas4- display workflow ref-path, repo-name, author, build-no, branch name
+      - name: Set the value
+        id: step_one
         run: |
-          echo "author: ${{ github.repository_owner }}"
-          echo "workflow ref-path: ${{ github.workflow_ref }}"
-          echo "branch name: ${{ github.ref_name }}"
-          echo "build-no: ${{ github.run_number }}"
-          echo "repo name: ${{ github.repository }}"
- create_secrets:
-    name: Create Secrets
-    needs: fetching_details
-    runs-on: windows-latest
-    steps:
-      - name: Task5- create secrets and use those secrets in your job
-        env:
-          PASSWORD_PS: ${{secrets.PASSWORD}}
-        run: echo $PASSWORD
- Github_Release:
-    name: Create Release
-    needs: create_secrets
-    runs-on: windows-latest
-    steps: 
-      - name: Task7 - create a release with (your name - repo name - branch name - workflow no)
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          tag_name: ${{github.actor}}-${{github.run_number}}
-          release_name: ${{github.actor}}-${{github.run_number}}
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: echo "${{ env.action_state }}" 
+
+
