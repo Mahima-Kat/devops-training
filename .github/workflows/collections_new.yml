@@ -24,7 +24,7 @@ jobs:
           echo $myName, $myJson.name, $myEmpId, $myJson.employee_id 
       - name: Checking value null or not
         run: |
-          echo "${{ env.$myName }}" 
+          echo "${{ env.myName }}" 
           echo "${{ env.emp_id }}" 
           echo "${{ env.version }}" 
           #if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
