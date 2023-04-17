@@ -4,7 +4,7 @@ on:
   workflow_dispatch: 
   
 jobs:
-  reading_json:
+ reading_json:
     name: Reading JSON
     runs-on: windows-latest
     steps:
@@ -17,9 +17,14 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
-          echo "name = $myJson.name" >> $GITHUB_ENV
-          echo "emp_id = $myJson.employee_id" >> $GITHUB_ENV
-          echo "version = $myJson.version" >> $GITHUB_ENV
+          $myName = $myJson.name
+          echo $myName, $myJson.name
+          $myEmpId = $myJson.employee_id
+          $Myversion = $myJson.version
+        env: 
+          name: $myName,
+          emp_id: $myEmpId,
+          version: $Myversion
       - name: Checking value null or not
         run: |
           echo "${{ env.name }}" 
@@ -27,7 +32,7 @@ jobs:
           echo "${{ env.version }}" 
           #if ([string]::IsNullOrEmpty(${{ env.name }}) -or [string]::IsNullOrEmpty(${{ env.emp_id }}) -or [string]::IsNullOrEmpty(${{ env.version }})) 
           #{echo "value is null"}
-  fetching_details:
+ fetching_details:
     name: Github Details
     needs: reading_json
     runs-on: windows-latest
@@ -39,7 +44,7 @@ jobs:
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
           echo "repo name: ${{ github.repository }}"
-  create_secrets:
+ create_secrets:
     name: Create Secrets
     needs: fetching_details
     runs-on: windows-latest
@@ -48,7 +53,7 @@ jobs:
         env:
           PASSWORD_PS: ${{secrets.PASSWORD}}
         run: echo $PASSWORD
-  Github_Release:
+ Github_Release:
     name: Create Release
     needs: create_secrets
     runs-on: windows-latest
