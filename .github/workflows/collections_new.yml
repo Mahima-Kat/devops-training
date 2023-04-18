@@ -17,7 +17,8 @@ jobs:
         run: |
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
-          echo "NAME=$myJson.NAME" >> $GITHUB_ENV
+          echo "{$name}={$myJson.name}" >> $GITHUB_ENV
+          echo $name
           echo "emp_id=$myJson.employee_id" >> $GITHUB_ENV
           echo "version=myJson.version" >> $GITHUB_ENV
       - name: Checking value null or not
