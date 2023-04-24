@@ -29,8 +29,9 @@ jobs:
           echo "My name is - $Env:name" 
           echo "$env:emp_id" 
           echo "$env:version" 
-          #if ([string]::IsNullOrEmpty($env:name) -or [string]::IsNullOrEmpty($env:emp_id) -or [string]::IsNullOrEmpty($env:version)) 
-          #{echo "value is null"}
+          #If value are empty it will show error
+          if ([string]::IsNullOrEmpty($env:name) -or [string]::IsNullOrEmpty($env:emp_id) -or [string]::IsNullOrEmpty($env:version)) 
+          {echo "value is null"}
   fetching_details:
     name: Github Details
     needs: reading_json
