@@ -31,7 +31,7 @@ jobs:
           echo "$env:version" 
           #If value are empty it will show error
           if ([string]::IsNullOrEmpty($env:name) -or [string]::IsNullOrEmpty($env:emp_id) -or [string]::IsNullOrEmpty($env:version)) 
-          {echo "value is null"}
+          {echo "::error:: values is/are null"}
   fetching_details:
     name: Github Details
     needs: reading_json
