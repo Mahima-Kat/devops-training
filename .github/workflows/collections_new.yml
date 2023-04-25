@@ -60,7 +60,7 @@ jobs:
     needs: create_secrets
     runs-on: windows-latest
     steps: 
-      - name: Task7 - create a release with (your name - repo name - branch name - workflow no)
+      - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
