@@ -15,8 +15,10 @@ jobs:
       - name: Task1- Read the config file and display the contents of it.
         id: step1
         run: |
+          #storing the values from json file to $myJson
           $myJson = Get-Content ".github/devops.config" -Raw | ConvertFrom-Json 
           echo $myJson
+          #fetching the values from json file to variables
           $myName = $myJson.name
           $employeeId = $myJson.employee_id
           $versionNo = $myJson.version
