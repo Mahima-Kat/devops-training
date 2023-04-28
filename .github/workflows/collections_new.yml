@@ -46,6 +46,7 @@ jobs:
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
           echo "repo name: ${{ github.repository }}"
+          echo "action ref: {{ github.action_ref }}"
   create_secrets:
     name: Create Secrets
     needs: fetching_details
@@ -65,7 +66,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: release-${{ github.run_number }}-version-1.0-{{ github.action_ref }}
+          tag_name: release-${{ github.run_number }}-version-1.0
           release_name: release-${{ github.run_number }}-version-1.0
 
     
