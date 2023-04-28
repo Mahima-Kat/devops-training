@@ -61,7 +61,7 @@ jobs:
     runs-on: windows-latest
     steps: 
       - name: create release
-        uses: actions/release@v1
+        uses: farmersdog/release@v2.2.1
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           chStoryUrl: 'https://app.shortcut.com/org/story'
