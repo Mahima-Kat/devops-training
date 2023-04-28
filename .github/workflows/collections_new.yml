@@ -68,5 +68,5 @@ jobs:
           tag_name: release-${{ github.run_number }}-version-1.0
           release_name: release-${{ github.run_number }}-version-1.0
       - name: Using release
-        run: echo ${{ github.tag_name }} ${{ release_id }}
+        run: echo ${{ github.tag_name }} ${{ github.release_id }}
     
