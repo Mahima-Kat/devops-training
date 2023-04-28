@@ -65,6 +65,7 @@ jobs:
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           chStoryUrl: 'https://app.shortcut.com/org/story'
-          tag_name: ${{ github.event.release.tag_name }}
+          tag: "v1.0.0"
+          #tag: ${{ github.event.release.tag_name }}
           prerelease: false
           createChangelog: false
