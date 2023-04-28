@@ -46,7 +46,6 @@ jobs:
           echo "branch name: ${{ github.ref_name }}"
           echo "build-no: ${{ github.run_number }}"
           echo "repo name: ${{ github.repository }}"
-          echo "action ref: {{ github.action_ref }}"
   create_secrets:
     name: Create Secrets
     needs: fetching_details
