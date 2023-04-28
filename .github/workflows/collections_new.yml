@@ -60,12 +60,13 @@ jobs:
     needs: create_secrets
     runs-on: windows-latest
     steps: 
-      - name: create release
-        uses: farmersdog/release@v2.2.1
+      - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          ghToken: ${{ secrets.GITHUB_TOKEN }}
-          chStoryUrl: 'https://app.shortcut.com/org/story'
-          tag: "v1.0.0"
-          #tag: ${{ github.event.release.tag_name }}
-          prerelease: false
-          createChangelog: false
+          tag_name: release-${{ github.run_number }}-version-1.0
+          release_name: release-${{ github.run_number }}-version-1.0
+      - name: Using release
+        run: echo ${{ github.tag_name }} ${{ release_id }}
+    
