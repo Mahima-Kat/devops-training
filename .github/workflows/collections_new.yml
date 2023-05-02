@@ -67,7 +67,7 @@ jobs:
       - name: Get latest tag
         run: |
              git fetch --tags
-             git describe --tags `git rev-list --tags`
+             git describe --abbrev=0 --tags
 
 
     
