@@ -65,8 +65,10 @@ jobs:
         with:
           fetch-depth: 2
       - name: Get latest tag
-        run: git fetch --tags
- 
+        run: |
+             git fetch --tags
+             latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+             echo "Latest tag: $latest_tag"
 
 
     
