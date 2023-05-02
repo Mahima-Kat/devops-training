@@ -67,7 +67,7 @@ jobs:
       - name: Get latest tag
         run: |
              git fetch --tags
-             git describe --tags `git rev-list --tags --depth 1`
+             git describe --tags `git rev-list --tags --first-parent`
 
 
     
