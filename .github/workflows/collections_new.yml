@@ -60,14 +60,35 @@ jobs:
     needs: create_secrets
     runs-on: windows-latest
     steps:
-      - name: code checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
       - name: Get latest tag
         run: |
-             git fetch --tags
-             git describe --abbrev=0 --tags
+          git fetch --tags
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "Latest tag: $latest_tag"
+        id: get_tag
+      - name: Increment version
+        run: |
+          current_version=$(echo ${{ steps.get_tag.outputs.latest_tag }} | sed 's/^v//')
+          echo "Current version: $current_version"
+          version_parts=(${current_version//./ })
+          major=${version_parts[0]}
+          minor=${version_parts[1]}
+          patch=${version_parts[2]}
+          patch=$((patch+1))
+          new_version="$major.$minor.$patch"
+          echo "New version: $new_version"
+          echo ::set-output name=new_version::$new_version
+          id: inc_version
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.inc_version.outputs.new_version }}
+          release_name: Release ${{ steps.inc_version.outputs.new_version }}
+          body: |
+            Description of the release goes here.
+
 
 
     
