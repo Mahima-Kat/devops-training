@@ -68,7 +68,11 @@ jobs:
           $latestReleaseNumber = $latestVersion.Split('.')[-1]
           $releaseNumberVariable = $latestReleaseNumber
           echo "$releaseNumberVariable"
-        
+          $currentReleaseNumber = [int]$releaseNumberVariable
+          $currentReleaseNumber++
+          $newReleaseNumber = $currentReleaseNumber.ToString()
+          $releaseNumberVariable = $newReleaseNumber
+          echo "$releaseNumberVariable"
     
 
 
