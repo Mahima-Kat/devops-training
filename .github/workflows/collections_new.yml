@@ -59,35 +59,14 @@ jobs:
     name: Create Release
     needs: create_secrets
     runs-on: windows-latest
-    steps:
-      - name: Get latest tag
-        run: |
-          git fetch --tags
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-          echo "Latest tag: $latest_tag"
-        id: get_tag
-      - name: Increment version
-        run: |
-          current_version=$(echo ${{ steps.get_tag.outputs.latest_tag }} | sed 's/^v//')
-          echo "Current version: $current_version"
-          version_parts=(${current_version//./ })
-          major=${version_parts[0]}
-          minor=${version_parts[1]}
-          patch=${version_parts[2]}
-          patch=$((patch+1))
-          new_version="$major.$minor.$patch"
-          echo "New version: $new_version"
-          echo ::set-output name=new_version::$new_version
-          id: inc_version
-      - name: Create Release
+    steps: 
+      - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: v${{ steps.inc_version.outputs.new_version }}
-          release_name: Release ${{ steps.inc_version.outputs.new_version }}
-          body: |
-            Description of the release goes here.
+          tag_name: release-${{ github.run_number }}-version-1.0
+          release_name: release-${{ github.run_number }}-version-1.0
 
 
 
