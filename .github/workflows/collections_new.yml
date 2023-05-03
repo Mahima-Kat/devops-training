@@ -71,9 +71,9 @@ jobs:
           $currentReleaseNumber = [int]$releaseNumberVariable
           $currentReleaseNumber++
           $newReleaseNumber = $currentReleaseNumber.ToString()
-          $releaseNumberVariable1 = $newReleaseNumber
-          echo "$releaseNumberVariable1"
-          echo "$latestVersion"-"$releaseNumberVariable"-"$releaseNumberVariable1"
+          $releaseNumberVariable = $newReleaseNumber
+          echo "$releaseNumberVariable"
+          echo "$latestVersion"-"$releaseNumberVariable"
           
     
 
