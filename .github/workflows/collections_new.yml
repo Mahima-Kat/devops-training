@@ -78,10 +78,6 @@ jobs:
           $minor = [int]$minor
           $minor++
           echo "$release-$releaseNumber-$major.$minor"
-          echo "$release" >> $env:GITHUB_ENV
-          echo "releaseNumber" >> $env:GITHUB_ENV
-          echo "major"  >> $env:GITHUB_ENV
-          echo "minor" >> $env:GITHUB_ENV
       - name: Increment release
         uses: actions/create-release@v1
         env:
