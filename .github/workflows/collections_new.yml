@@ -63,19 +63,8 @@ jobs:
       - name: identify latest gitHub release and assign to variable
         run: |
           $latestRelease = Invoke-RestMethod -Uri "https://api.github.com/repos/Mahima-Kat/devops-training/releases/latest"
-          $latestVersion = $latestRelease.tag_name
-          echo "$latestVersion"
-          $latestReleaseNumber = $latestVersion.Split('.')[1]
-          $newTag_Name = $latestVersion.Split('.')[0]
-          echo "$newTag_Name"
-          $releaseNumberVariable = $latestReleaseNumber
-          echo "$releaseNumberVariable"
-          $currentReleaseNumber = [int]$releaseNumberVariable
-          $currentReleaseNumber++
-          $newReleaseNumber = $currentReleaseNumber.ToString()
-          $releaseNumberVariable = $newReleaseNumber
-          echo "$releaseNumberVariable"
-          echo "$newTag_Name-$releaseNumberVariable"
+          $latestReleaseVersion = $latestRelease.tag_name
+          echo "$latestReleaseVersion"
           
     
 
