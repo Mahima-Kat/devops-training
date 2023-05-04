@@ -75,7 +75,7 @@ jobs:
           $newReleaseNumber = $currentReleaseNumber.ToString()
           $releaseNumberVariable = $newReleaseNumber
           echo "$releaseNumberVariable"
-          echo "$newTag_Name"-"$releaseNumberVariable"
+          echo "$newTag_Name-$releaseNumberVariable"
           
     
 
