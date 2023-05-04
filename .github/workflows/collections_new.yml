@@ -65,7 +65,9 @@ jobs:
           $latestRelease = Invoke-RestMethod -Uri "https://api.github.com/repos/Mahima-Kat/devops-training/releases/latest"
           $latestVersion = $latestRelease.tag_name
           echo "$latestVersion"
-          $latestReleaseNumber = $latestVersion.Split('.')[-1]
+          $latestReleaseNumber = $latestVersion.Split('.')[1]
+          $newTag_Name = $latestVersion.Split('.')[0]
+          echo "$newTag_Name"
           $releaseNumberVariable = $latestReleaseNumber
           echo "$releaseNumberVariable"
           $currentReleaseNumber = [int]$releaseNumberVariable
@@ -73,7 +75,7 @@ jobs:
           $newReleaseNumber = $currentReleaseNumber.ToString()
           $releaseNumberVariable = $newReleaseNumber
           echo "$releaseNumberVariable"
-          echo "$latestVersion"-"$releaseNumberVariable"
+          echo "$newTag_Name"-"$releaseNumberVariable"
           
     
 
