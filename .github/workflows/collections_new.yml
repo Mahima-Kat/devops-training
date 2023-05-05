@@ -77,7 +77,8 @@ jobs:
           $minor = $firstVersionNumber.Split('.')[1]
           $minor = [int]$minor
           $minor++
-          $newVersion = "$release-$releaseNumber"
+          $newVersion = "$release-$releaseNumber-$major.$minor"
+          $newVersion = $newVersion.ToString()
           echo "$newVersion"
           echo "RELEASE=$release" >> $GITHUB_ENV
           echo "RELEASE_NUMBER=$releaseNumber" >> $GITHUB_ENV
