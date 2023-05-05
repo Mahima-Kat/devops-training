@@ -78,13 +78,19 @@ jobs:
           $minor = [int]$minor
           $minor++
           echo "$release-$releaseNumber-$major.$minor"
-      - name: Increment release
+          echo "::set-env name=RELEASE::$release"
+          echo "::set-env name=RELEASE_NUMBER::$releaseNumber"
+          echo "::set-env name=MAJOR::$major"
+          echo "::set-env name=MINOR::$minor"
+      - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          RELEASE: ${{ env.RELEASE }}
+          RELEASE_NUMBER: ${{ env.RELEASE_NUMBER }}
         with:
-          tag_name: ${{ env.release }}-${{ env.releaseNumber }}
-          release_name: ${{ env.release }}-${{ env.releaseNumber }}
+          tag_name: ${{ env.RELEASE }}-${{ env.RELEASE_NUMBER }}
+          release_name: ${{ env.RELEASE }}-${{ env.RELEASE_NUMBER }}
 
 
     
