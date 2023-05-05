@@ -84,11 +84,11 @@ jobs:
           echo "NEW_VERSION=$newVersion" >> $GITHUB_ENV
       - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
           tag_name: ${{ env.NEW_VERSION }}
           release_name: ${{ env.NEW_VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
 
 
