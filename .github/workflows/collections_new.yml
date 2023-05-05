@@ -88,8 +88,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEW_VERSION: ${{ env.newVersion }}
         with:
-          tag_name: ${{ env.NEW_VERSION }}
-          release_name: ${{ env.NEW_VERSION }}
+          tag_name: ${{ env.newVersion }}
+          release_name: ${{ env.newVersion }}
 
 
   
