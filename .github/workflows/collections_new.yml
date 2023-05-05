@@ -87,7 +87,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEW_VERSION: ${{ env.newVersion }}
-          run: echo $newVersion
+          run: echo "$env:newVersion"
 
 
 
