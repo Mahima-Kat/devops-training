@@ -78,9 +78,8 @@ jobs:
           $minor = [int]$minor
           $minor++
           echo "$release-$releaseNumber-$major.$minor"
-        env:
-          RELEASE: ${{ format('{0}', release) }}
-          RELEASE_NUMBER: ${{ format('{0}', releaseNumber) }}
+          echo "RELEASE=$release" >> $env:$GITHUB_ENV
+          echo "RELEASE_NUMBER=$releaseNumber" >> $env:$GITHUB_ENV
       - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
         uses: actions/create-release@v1
         env:
