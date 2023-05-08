@@ -82,6 +82,9 @@ jobs:
           echo "$newVersion"
           echo "RELEASE=$release" >> $GITHUB_ENV
           echo "RELEASE_NUMBER=$releaseNumber" >> $GITHUB_ENV
+          echo "RELEASE_NUMBER=$releaseNumber" >> $GITHUB_ENV
+          echo "MAJOR=$major" >> $GITHUB_ENV
+          echo "MINOR=$minor" >> $GITHUB_ENV
           echo "NEW_VERSION=$newVersion" >> $GITHUB_ENV
       - name: Task7 - create a release with (your name - repo name - branch name - workflow no).
         uses: actions/create-release@v1
